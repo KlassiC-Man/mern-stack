@@ -9,6 +9,9 @@ import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const authLinks = (
     <ul>
+      <li style={{ marginTop: 8 }}>
+        <Link to="/dashboard">Dashboard</Link>
+      </li>
       <li>
         <a
           href="#!"
