@@ -7,6 +7,7 @@ import {
   AUTH_ERROR,
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
+  LOGOUT,
 } from "./types";
 import setAuthToken from "../utils/setAuthToken";
 
@@ -58,24 +59,26 @@ export const login =
   ({ email, password }) =>
   async (dispatch) => {
     const config = {
-      // additional comments just like that for git issues!
       headers: {
         "Content-Type": "application/json",
       },
     };
-    const body = JSON.stringify({ email, password });
 
     try {
-      const res = await axios.post("/api/auth", body, config);
+      const res = await axios.post("/api/auth", { email, password }, config);
+      localStorage.setItem("token", res.data.token);
       dispatch({ type: LOGIN_SUCCESS, payload: res.data });
       dispatch(loadUser());
     } catch (e) {
       const errors = e.response.data.errors;
       if (errors) {
-        errors.forEach((error) =>
-          dispatch(setAlert(error.msg, "danger", 5000))
-        );
+        errors.forEach((error) => console.log(error.msg));
       }
       dispatch({ type: LOGIN_FAILURE });
     }
   };
+
+//Logout
+export const logout = () => (dispatch) => {
+  dispatch({ type: LOGOUT });
+};
