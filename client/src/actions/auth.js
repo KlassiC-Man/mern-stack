@@ -8,6 +8,7 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
   LOGOUT,
+  CLEAR_PROFILE,
 } from "./types";
 import setAuthToken from "../utils/setAuthToken";
 
@@ -75,10 +76,12 @@ export const login =
         errors.forEach((error) => console.log(error.msg));
       }
       dispatch({ type: LOGIN_FAILURE });
+      dispatch(setAlert("No account with such email or password", "danger"));
     }
   };
 
 //Logout
 export const logout = () => (dispatch) => {
+  dispatch({ type: CLEAR_PROFILE });
   dispatch({ type: LOGOUT });
 };

@@ -2,9 +2,9 @@ import ProgressBar from "@badrap/bar-of-progress";
 import React, { Fragment } from "react";
 
 const progress = new ProgressBar({
-  size: 5,
+  size: 6,
   className: "bar-of-progress",
   delay: 5,
-  color: "#fff",
+  color: "#C51E3A",
 });
 export default progress;
