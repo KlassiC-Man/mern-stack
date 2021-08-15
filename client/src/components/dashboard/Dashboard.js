@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getCurrentProfile } from "../../actions/profile";
-import Spinner from "../layout/ProgressBar";
 import { Fragment } from "react";
 import progress from "../layout/ProgressBar";
 
@@ -16,7 +15,7 @@ const Dashboard = ({
   }, []);
 
   useEffect(() => {
-    if (loading || profile === null) {
+    if (loading || profile === null) {  
       progress.start();
     } else {
       progress.finish();

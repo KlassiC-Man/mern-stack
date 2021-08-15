@@ -10,6 +10,9 @@ const config = require("config");
 // /api/profile route!!!
 router.get("/me", auth, async function (req, res) {
   try {
+    setTimeout(() => {
+      console.log('Hello, World!')
+    }, 3000)
     const profile = await Profile.findOne({ user: req.user.id }).populate(
       "user",
       ["name", "avatar"]
