@@ -15,6 +15,9 @@ import store from "./store";
 import { loadUser } from "./actions/auth";
 import CreateProfile from "./components/profile-form/CreateProfile";
 import EditProfile from "./components/profile-form/EditProfile";
+import { addExperience } from "./actions/profile";
+import AddExperience from "./components/profile-form/AddExperience";
+import AddEducation from "./components/profile-form/AddEducation";
 
 // This checks before itself that if the localStorage has a token, and if it does updates the setAuthToken method
 if (localStorage.token) {
@@ -48,6 +51,17 @@ function App() {
                 exact
                 component={EditProfile}
               />
+              <PrivateRoute
+                path="/add-experience"
+                exact
+                component={AddExperience}
+              />
+              <PrivateRoute
+                path="/add-education"
+                exact
+                component={AddEducation}
+              />
+              <Route component={() => <div>Not found its a 404 dummy</div>} />
             </Switch>
           </section>
         </Fragment>
