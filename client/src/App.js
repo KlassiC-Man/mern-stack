@@ -13,6 +13,8 @@ import PrivateRoute from "./components/routing/PrivateRoute";
 import { Provider } from "react-redux";
 import store from "./store";
 import { loadUser } from "./actions/auth";
+import CreateProfile from "./components/profile-form/CreateProfile";
+import EditProfile from "./components/profile-form/EditProfile";
 
 // This checks before itself that if the localStorage has a token, and if it does updates the setAuthToken method
 if (localStorage.token) {
@@ -36,6 +38,16 @@ function App() {
               <Route path="/register" exact component={Register} />
               <Route path="/login" exact component={Login} />
               <PrivateRoute path="/dashboard" exact component={Dashboard} />
+              <PrivateRoute
+                path="/create-profile"
+                exact
+                component={CreateProfile}
+              />
+              <PrivateRoute
+                path="/edit-profile"
+                exact
+                component={EditProfile}
+              />
             </Switch>
           </section>
         </Fragment>

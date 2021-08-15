@@ -4,6 +4,9 @@ import { connect } from "react-redux";
 import { getCurrentProfile } from "../../actions/profile";
 import { Fragment } from "react";
 import progress from "../layout/ProgressBar";
+import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import DashboardActions from "./DashboardActions";
 
 const Dashboard = ({
   getCurrentProfile,
@@ -14,18 +17,42 @@ const Dashboard = ({
     getCurrentProfile();
   }, []);
 
+  const history = useHistory();
+
   useEffect(() => {
-    if (loading || profile === null) {  
+    if (loading) {
       progress.start();
-    } else {
-      progress.finish();
+      setTimeout(() => {
+        progress.finish();
+      }, 3000);
     }
-  }, [loading, profile]);
+  }, [loading]);
+
+  history.listen((location, action) => {
+    if (action) {
+      progress.start();
+      setTimeout(() => {
+        progress.finish();
+      }, 1500);
+    }
+  });
 
   return (
     <Fragment>
       <h1 className="large text-primary">Dashboard</h1>
       <p className="lead">Welcome {user && user.name}</p>
+      {profile !== null ? (
+        <Fragment>
+          <DashboardActions />
+        </Fragment>
+      ) : (
+        <Fragment>
+          <p>Hey, you have not yet setup a profile, please add some info</p>
+          <Link to="/create-profile" className="btn btn-primary my-1">
+            Create Profile
+          </Link>
+        </Fragment>
+      )}
     </Fragment>
   );
 };
