@@ -18,56 +18,74 @@ import EditProfile from "./components/profile-form/EditProfile";
 import { addExperience } from "./actions/profile";
 import AddExperience from "./components/profile-form/AddExperience";
 import AddEducation from "./components/profile-form/AddEducation";
+import Profiles from "./components/profiles/Profiles";
 
 // This checks before itself that if the localStorage has a token, and if it does updates the setAuthToken method
 if (localStorage.token) {
-  setAuthToken(localStorage.token);
+    setAuthToken(localStorage.token);
 }
 
 function App() {
-  useEffect(() => {
-    store.dispatch(loadUser());
-  }, []);
+    useEffect(() => {
+        store.dispatch(loadUser());
+    }, []);
 
-  return (
-    <Provider store={store}>
-      <Router>
-        <Fragment>
-          <Navbar />
-          <Route exact path="/" component={LandingPage} />
-          <section className="container">
-            <Alert />
-            <Switch>
-              <Route path="/register" exact component={Register} />
-              <Route path="/login" exact component={Login} />
-              <PrivateRoute path="/dashboard" exact component={Dashboard} />
-              <PrivateRoute
-                path="/create-profile"
-                exact
-                component={CreateProfile}
-              />
-              <PrivateRoute
-                path="/edit-profile"
-                exact
-                component={EditProfile}
-              />
-              <PrivateRoute
-                path="/add-experience"
-                exact
-                component={AddExperience}
-              />
-              <PrivateRoute
-                path="/add-education"
-                exact
-                component={AddEducation}
-              />
-              <Route component={() => <div>Not found its a 404 dummy</div>} />
-            </Switch>
-          </section>
-        </Fragment>
-      </Router>
-    </Provider>
-  );
+    return (
+        <Provider store={store}>
+            <Router>
+                <Fragment>
+                    <Navbar />
+                    <Route exact path="/" component={LandingPage} />
+                    <section className="container">
+                        <Alert />
+                        <Switch>
+                            <Route
+                                path="/register"
+                                exact
+                                component={Register}
+                            />
+                            <Route path="/login" exact component={Login} />
+                            <PrivateRoute
+                                path="/dashboard"
+                                exact
+                                component={Dashboard}
+                            />
+                            <PrivateRoute
+                                path="/create-profile"
+                                exact
+                                component={CreateProfile}
+                            />
+                            <PrivateRoute
+                                path="/edit-profile"
+                                exact
+                                component={EditProfile}
+                            />
+                            <PrivateRoute
+                                path="/add-experience"
+                                exact
+                                component={AddExperience}
+                            />
+                            <PrivateRoute
+                                path="/add-education"
+                                exact
+                                component={AddEducation}
+                            />
+                            <Route
+                                path="/profiles"
+                                exact
+                                component={Profiles}
+                            />
+                            <Route
+                                component={() => (
+                                    <div>Not found its a 404 dummy</div>
+                                )}
+                            />
+                        </Switch>
+                    </section>
+                </Fragment>
+            </Router>
+        </Provider>
+    );
 }
 
 export default App;
