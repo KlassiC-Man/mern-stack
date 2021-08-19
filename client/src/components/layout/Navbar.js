@@ -13,6 +13,9 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
         <Link to="/dashboard">Dashboard</Link>
       </li>
       <li style={{ marginTop: 8 }}>
+        <Link to="/posts">Posts</Link>
+      </li>
+      <li style={{ marginTop: 8 }}>
         <Link to="/profiles">Developers</Link>
       </li>
       <li>

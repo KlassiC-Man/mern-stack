@@ -1,0 +1,6 @@
+{
+  "mongoURI": "mongodb+srv://myname:Parth@7730@cluster0.gwdpk.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+  "jwtSecret": "90b46e1c59b655cf0c5d4b179ce676f53ef8476a45cf9e2ea09688b4e0f79ae51f1910bbdf1f8b1d7c6571493f02cf00eb2ddbc3cc6212b19412608a0be32629",
+  "githubClientId": "7ed88d2a08a0e32d2be8",
+  "githubSecret": "f79f44800f4d522ccd01096d60ea27138c4fd7fb"
+}
